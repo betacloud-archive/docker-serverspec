@@ -3,7 +3,7 @@ MAINTAINER Betacloud Solutions GmbH (https://www.betacloud-solutions.de)
 
 ENV DEBIAN_FRONTEND noninteractive
 ARG VERSION
-ENV VERSION ${VERSION:-2.18.0}
+ENV VERSION ${VERSION:-2.39.1}
 
 COPY files/run.sh /run.sh
 
@@ -11,7 +11,8 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
         netcat-traditional \
-        ruby-serverspec=${VERSION}-1 \
+        ruby \
+    && gem install serverspec -v $VERSION \
     && groupadd kolla \
     && useradd -m -d /var/lib/serverspec serverspec \
     && usermod -a -G kolla serverspec \

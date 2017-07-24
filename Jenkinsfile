@@ -26,8 +26,4 @@ node {
     currentBuild.result = "FAILURE"
       throw err
   }
-
-  finally {
-    slackSend color: 'good', message: 'Message from Jenkins Pipeline'
-  }
 }
